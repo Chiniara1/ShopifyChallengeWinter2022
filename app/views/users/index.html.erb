@@ -1,0 +1,22 @@
+<div class='text-center'> 
+
+  <br/>
+
+  <table class="table">
+  <thead>
+    <tr>
+      <th>User ID</th>
+      <th>Username</th>
+    </tr>
+  </thead>
+
+  <tbody>      
+  <% @user.each do |user| %>
+      <tr>
+          <td><%= user.id %></td>
+          <td><%= user.username %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</div>

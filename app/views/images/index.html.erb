@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Images</h1>
+
+<br/>
+
+<table class="table">
+  <thead>
+    <tr>
+      <% if @images.size >= 1 %>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Username</th>
+        <th>Image Commands</th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @images.each do |image| %>
+      <tr>
+        <td><%= image.name %></td>
+        <td><%= image.description %></td>
+        <td><%= User.find(image.user_id).username %></td>
+        <td><%= link_to 'Show', image %>
+        <% if image.user_id == current_user.id %>
+          <%= link_to 'Edit', edit_image_path(image) %>
+          <%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Image', new_image_path %>

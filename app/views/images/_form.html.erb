@@ -1,0 +1,51 @@
+<%= form_with(model: image, local: true) do |form| %>
+    <% if image.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(image.errors.count, "error") %> prohibited this image from being saved:</h2>
+  
+        <ul>
+          <% image.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div class="field">
+      <%= form.label :name, "Title: " %>
+      <%= form.text_field :name %>
+    </div> 
+    
+    <br/>
+  
+    <div class ="field">
+    <%= form.label :picture, "Picture: " %>
+    <%= form.file_field :picture %>
+
+    <br/>
+  
+    <div class="field">
+      <%= form.label :description, "Description: " %>
+      <%= form.text_area :description %>
+    </div>
+
+    <br/>
+  
+    <div class="field">
+    <%= form.label :is_protected, "Is Private: " %>
+    <%= form.label :is_protected, "Yes", :value => "true"  %>
+    <%= form.radio_button :is_protected, true %>
+    <%= form.label :is_protected, "No", :value => "false" %>
+    <%= form.radio_button :is_protected, false, :checked => true %>
+  </div>
+
+  <br/>
+
+  <div class="actions">
+    <%= form.submit "Confirm", class: "mt-2 btn btn-primary" %>
+  </div>
+
+   <br/>
+
+  <% end %>
+  
